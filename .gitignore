@@ -1,9 +1,5 @@
+.venv/
 .vscode/
 */__pycache__
-05/model/*.zip
-05/samples/
-05-2/mnist/
-05-3/mnist/
-05-3/model/
-project/2/
-project/stanford_cars_dataset
+stanford_cars_dataset/
+cnrpark_dataset/
