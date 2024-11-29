@@ -1,0 +1,3 @@
+class object_detection:
+    def __init__(self):
+        ...

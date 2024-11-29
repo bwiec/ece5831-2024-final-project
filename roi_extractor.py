@@ -1,0 +1,3 @@
+class roi_extractor:
+    def __init__(self):
+        ...

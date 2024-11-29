@@ -1,0 +1,3 @@
+class vehicle_classification:
+    def __init__(self):
+        ...
