@@ -18,4 +18,5 @@
   pip install scipy; # Needed for StanfordCars
   pip install kaggle; # Needed for manually downloading StanfordCars dataset
   pip install kagglehub; # Trying to download dataset manually without auth
+  pip install PyQt5; # Debugging issues with matplotlib plots not showint
   ```
