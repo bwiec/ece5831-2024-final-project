@@ -1,9 +1,6 @@
 import torch
 import torchvision
 from torchvision import models, transforms
-from PIL import Image
-import os
-import csv
 
 class vehicle_classification:
     def __init__(self, debug=False):
@@ -29,46 +26,12 @@ class vehicle_classification:
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),  # Normalize the image
         ])
 
-        # Load the class labels (assuming they were saved in the same order as during training)
-        #class_names = os.listdir('path/to/stanford-cars/dataset/train')  # List the class names (folders) in the 'train' directory
-        self.class_names = []
-        with open('stanford_cars_dataset/stanford_cars/stanford_cars_with_class_names_train.csv', 'r') as file:
-            reader = csv.reader(file)
-            header=True
-            for row in reader:
-                #print(row[6])
-                if header==False:
-                    self.class_names.append(row[6])
-                header=False
-
-
-
-
-        transform = {
-            'train': transforms.Compose([
-                transforms.RandomResizedCrop(224),
-                transforms.RandomHorizontalFlip(),
-                transforms.ToTensor(),
-                transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-            ]),
-            'val': transforms.Compose([
-                transforms.Resize(256),
-                transforms.CenterCrop(224),
-                transforms.ToTensor(),
-                transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-            ]),
-        }
-
-
-        train_dataset = torchvision.datasets.StanfordCars(root='./stanford_cars_dataset', transform=transform['train'], download=False)
+        train_dataset = torchvision.datasets.StanfordCars(root='./stanford_cars_dataset', transform=self.transform, download=False)
         self.class_names = train_dataset.classes
 
-    def classify_vehicles(self, img):        
-        # Load the image
-        image = Image.open(img)
-
+    def classify_vehicles(self, img):
         # Apply the transformations to the image
-        image_tensor = self.transform(image).unsqueeze(0)  # Add a batch dimension (unsqueeze(0))
+        image_tensor = self.transform(img).unsqueeze(0)  # Add a batch dimension (unsqueeze(0))
 
         # Move the image tensor to the same device as the model (GPU or CPU)
         image_tensor = image_tensor.to(self.device)
@@ -84,6 +47,4 @@ class vehicle_classification:
         # Print the result
         print(f"Predicted class: {predicted_class_name}")
         print(f"predicted_class.item(): {predicted_class.item()}")
-        #print(f"class_names[0]: {class_names[0]}")
-        #print(f"class_names[1]: {class_names[1]}")
-        #print(f"class_names[2]: {class_names[2]}")
+        return predicted_class_name
