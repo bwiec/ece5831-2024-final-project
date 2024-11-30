@@ -1,4 +1,5 @@
 import torch
+import torchvision
 from torchvision import models, transforms
 from PIL import Image
 import os
@@ -39,6 +40,28 @@ class vehicle_classification:
                 if header==False:
                     self.class_names.append(row[6])
                 header=False
+
+
+
+
+        transform = {
+            'train': transforms.Compose([
+                transforms.RandomResizedCrop(224),
+                transforms.RandomHorizontalFlip(),
+                transforms.ToTensor(),
+                transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+            ]),
+            'val': transforms.Compose([
+                transforms.Resize(256),
+                transforms.CenterCrop(224),
+                transforms.ToTensor(),
+                transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+            ]),
+        }
+
+
+        train_dataset = torchvision.datasets.StanfordCars(root='./stanford_cars_dataset', transform=transform['train'], download=False)
+        self.class_names = train_dataset.classes
 
     def classify_vehicles(self, img):        
         # Load the image
