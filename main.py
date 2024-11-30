@@ -12,13 +12,11 @@ def parse_args():
     arg_parser.add_argument('--debug', action='store_true', help='Enable debug messages')
     arg_parser.add_argument('file', nargs='+', help='Image file to test')
 
-
     Args = sys.argv
     Args.pop(0)
     args = arg_parser.parse_args(Args)
 
     return args
-
 
 if __name__ == "__main__":
     
