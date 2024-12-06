@@ -15,11 +15,28 @@ The `main.py` module contains the main logic that puts all these modules togethe
 Additionally, the `test` directory contains unit tests and integration tests for demonstrating the use of individual modules.
 
 ## Running the demonstration
+`final-project.ipynb` shows how to run the demonstration.
+
+`main.py` is the main program to run and it takes one or more image files as input and processes them individually while keeping track of parking lot state
+
+```bash
+main.py --help
+usage: main.py [-h] [--debug] files [files ...]
+
+Unit tester for object detection
+
+positional arguments:
+  files       Image file(s) to test
+
+options:
+  -h, --help  show this help message and exit
+  --debug     Enable debug messages/images
+```
 
 ## Links
 * Datasets
   * StanfordCars - https://www.kaggle.com/datasets/rickyyyyyyy/torchvision-stanford-cars
   * CNRPark - https://www.kaggle.com/datasets/ddsshubham/cnrpark-ext
 * Presentation - 
-* Final Report - 
+* Final Report - https://docs.google.com/document/d/1MW4-hHf1tfZ2vtGx_va2WhX37AJSRMKY/edit?usp=drive_link&ouid=109767501502679541558&rtpof=true&sd=true
 * Demo video - 
