@@ -7,8 +7,6 @@ class vehicle_classification:
     def __init__(self, debug=False):
         self.debug = debug
 
-        #self.model_path = 'resnet50_finetuned.pth'  # Path to the fine-tuned model
-        #self.model_path = os.path.abspath('./model/resnet50_finetuned.pth')
         self.model_path = './model/resnet50_finetuned.pth'  # Path to the fine-tuned model
 
         # Load the fine-tuned model

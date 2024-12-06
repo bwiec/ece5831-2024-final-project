@@ -1,22 +1,25 @@
-## Running on Windows
-* Linux box uses python 3.10.12. Can't get that on windows... trying 3.10.11 so I can get the right tensorflow (2.15.0 is what's on Linux machine) version
-* Created a new venv in ./.venv
-* To activate, either:
-  * Open git bash terminal which seems to automatically enable the venv
-  * Open command prompt and run:
-    ```bash
-    .\.venv\Scripts\activate.bat
-    echo %VIRTUAL_ENV%
-    ```
-* Installed the following things in the venv
-  ```bash
-  pip install tensorflow==2.15.0
-  pip install opencv-python
-  pip install matplotlib
-  pip install torch
-  pip install torchvision
-  pip install scipy; # Needed for StanfordCars
-  pip install kaggle; # Needed for manually downloading StanfordCars dataset
-  pip install kagglehub; # Trying to download dataset manually without auth
-  pip install PyQt5; # Debugging issues with matplotlib plots not showint
-  ```
+# Smart Parking Lot Monitoring using Image Object Detection and Classification
+
+## Abstract
+In the technologies of smart cities and autonomous vehicles, a common use case is Automated Valet Parking (AVP) where the driver will exit his or her vehicle at the destination and command the autonomous vehicle to park itself according to nearby available parking spots. The vehicle will need to communicate with infrastructure to find the nearby parking lots and learn their occupancy so it can decide where to navigate.  In this paper, we propose a novel technique for monitoring parking lot occupancy using as few as one single camera that is properly positioned. We develop machine-learning based perception algorithm that monitors the entry/exit point(s) of a parking lot and tracks the occupancy of the parking lot based on the types of available parking spots.
+
+## Software Architecture
+The software architecture is broken up into several modules:
+* `object_detection.py` - Detect objects in input image
+* `roi_extractor.py` - Search the detected object list and crop out region(s) of interest from the original image for any objects detected at the designated entrance/exit coordinates
+* `vehicle_classification` - Fine-grained classifier to identify specific vehicle make/model
+* `parking_state` - Tracks current parking lot state for various types of spots
+
+The `main.py` module contains the main logic that puts all these modules together.
+
+Additionally, the `test` directory contains unit tests and integration tests for demonstrating the use of individual modules.
+
+## Running the demonstration
+
+## Links
+* Datasets
+  * StanfordCars - https://www.kaggle.com/datasets/rickyyyyyyy/torchvision-stanford-cars
+  * CNRPark - https://www.kaggle.com/datasets/ddsshubham/cnrpark-ext
+* Presentation - 
+* Final Report - 
+* Demo video - 

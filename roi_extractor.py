@@ -31,7 +31,7 @@ class roi_extractor:
                 width = xmax - xmin
                 entrance_object = crop(img, ymin, xmin, height, width)
                 if self.debug:
-                    print(f"Entrance object discovered at (xmin={xmin}, ymin={ymin}, xmax={xmax}, ymax={ymax}")
+                    print(f"Entrance object discovered at: xmin={xmin}, ymin={ymin}, xmax={xmax}, ymax={ymax}")
 
             if (xmin > self.exit.xmin and xmax < self.exit.xmax and
                 ymin > self.exit.ymin and ymax < self.exit.ymax):
@@ -39,7 +39,7 @@ class roi_extractor:
                 width = xmax - xmin
                 exit_object = crop(img, ymin, xmin, height, width)
                 if self.debug:
-                    print(f"Exit object discovered at (xmin={xmin}, ymin={ymin}, xmax={xmax}, ymax={ymax}")
+                    print(f"Exit object discovered at: xmin={xmin}, ymin={ymin}, xmax={xmax}, ymax={ymax}")
 
         if self.debug:
             self._plot(img, entrance_object, exit_object)
@@ -52,12 +52,12 @@ class roi_extractor:
         plt.title('Original input image')
         
         if entrance_object.numel():
-            plt.subplot(3,1 , 2)
+            plt.subplot(3, 1, 2)
             plt.imshow(to_pil_image(entrance_object))
             plt.title('Object detected at parking lot entrance')
         
         if exit_object.numel():
-            plt.subplot(3,1 , 3)
+            plt.subplot(3, 1, 3)
             plt.imshow(to_pil_image(exit_object))
             plt.title('Object detected at parking lot exit')
 

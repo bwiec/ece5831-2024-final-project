@@ -20,7 +20,8 @@ class object_detection:
 
     def _predict(self):
         self.prediction = self.model(self.batch)[0]
-        print (self.prediction["boxes"][0]) # Prints out xmin,ymin,xmax,ymax of detected box 0
+        if self.prediction["boxes"].numel():
+            print (self.prediction["boxes"][0]) # Prints out xmin,ymin,xmax,ymax of detected box 0
 
     def _postprocess(self, img):
         labels = [self.weights.meta["categories"][i] for i in self.prediction["labels"]]
