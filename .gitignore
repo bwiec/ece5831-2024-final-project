@@ -1,5 +1,4 @@
 .venv/
 .vscode/
 __pycache__
-stanford_cars_dataset/
-cnrpark_dataset/
+datasets/

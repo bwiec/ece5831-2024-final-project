@@ -29,9 +29,10 @@ class object_detection:
             box = draw_bounding_boxes(img, boxes=self.prediction["boxes"],
                           labels=labels,
                           colors="red",
-                          width=4, font_size=30)
+                          width=4)
             im = to_pil_image(box.detach())
             plt.imshow(im)
+            plt.title('Input image with detected objects')
             plt.show()
 
         return self.prediction["boxes"]

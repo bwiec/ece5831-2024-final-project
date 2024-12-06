@@ -1,3 +1,4 @@
+import os
 import torch
 import torchvision
 from torchvision import models, transforms
@@ -6,7 +7,10 @@ class vehicle_classification:
     def __init__(self, debug=False):
         self.debug = debug
 
-        self.model_path = 'resnet50_finetuned.pth'  # Path to the fine-tuned model
+        #self.model_path = 'resnet50_finetuned.pth'  # Path to the fine-tuned model
+        #self.model_path = os.path.abspath('./model/resnet50_finetuned.pth')
+        self.model_path = './model/resnet50_finetuned.pth'  # Path to the fine-tuned model
+
         # Load the fine-tuned model
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -26,7 +30,7 @@ class vehicle_classification:
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),  # Normalize the image
         ])
 
-        train_dataset = torchvision.datasets.StanfordCars(root='./stanford_cars_dataset', transform=self.transform, download=False)
+        train_dataset = torchvision.datasets.StanfordCars(root='./datasets', transform=self.transform, download=False)
         self.class_names = train_dataset.classes
 
     def classify_vehicles(self, img):
