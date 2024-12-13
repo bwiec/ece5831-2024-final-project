@@ -38,5 +38,5 @@ options:
   * StanfordCars - https://www.kaggle.com/datasets/rickyyyyyyy/torchvision-stanford-cars
   * CNRPark - https://www.kaggle.com/datasets/ddsshubham/cnrpark-ext
 * Presentation - https://docs.google.com/presentation/d/1ne-QCjaPfzOV1j6K3Yeshj4Uq2oAknc_/edit?usp=drive_link&ouid=109767501502679541558&rtpof=true&sd=true
-* Final Report - https://docs.google.com/document/d/1MW4-hHf1tfZ2vtGx_va2WhX37AJSRMKY/edit?usp=drive_link&ouid=109767501502679541558&rtpof=true&sd=true
+* Final Report - https://drive.google.com/file/d/19iZEs7F5_0I6ZJO2cg9cKe5DBE1N86A9/view?usp=sharing
 * Demo video - https://youtu.be/AS0wdOhJN2Y
